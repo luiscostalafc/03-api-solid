@@ -15,6 +15,15 @@ describe("Check In Use Case", () => {
     gymsRepository = new InMemoryGymsRepository();
     sut = new CheckInUseCase(checkInsRepository, gymsRepository);
 
+    gymsRepository.items.push({
+      id: "gym-01",
+      title: "JavaScript Gym",
+      description: "",
+      phone: "",
+      latitute: new Prisma.Decimal(38.9954378),
+      longitude: new Prisma.Decimal(-9.1411938),
+    });
+
     vi.useFakeTimers();
   });
 
@@ -23,20 +32,11 @@ describe("Check In Use Case", () => {
   });
 
   it("should be able to check in", async () => {
-    gymsRepository.items.push({
-      id: "gym-01",
-      title: "JavaScript Gym",
-      description: "",
-      phone: "",
-      latitute: new Prisma.Decimal(0),
-      longitude: new Prisma.Decimal(0),
-    });
-
     const { checkIn } = await sut.execute({
       gymId: "gym-01",
       userId: "user-01",
-      userLatitude: 0,
-      userLongitude: 0,
+      userLatitude: 38.9954378,
+      userLongitude: -9.1411938,
     });
 
     expect(checkIn.id).toEqual(expect.any(String));
@@ -48,16 +48,16 @@ describe("Check In Use Case", () => {
     await sut.execute({
       gymId: "gym-01",
       userId: "user-01",
-      userLatitude: 0,
-      userLongitude: 0,
+      userLatitude: 38.9954378,
+      userLongitude: -9.1411938,
     });
 
     await expect(() =>
       sut.execute({
         gymId: "gym-01",
         userId: "user-01",
-        userLatitude: 0,
-        userLongitude: 0,
+        userLatitude: 38.9954378,
+        userLongitude: -9.1411938,
       })
     ).rejects.toBeInstanceOf(Error);
   });
@@ -68,8 +68,8 @@ describe("Check In Use Case", () => {
     await sut.execute({
       gymId: "gym-01",
       userId: "user-01",
-      userLatitude: 0,
-      userLongitude: 0,
+      userLatitude: 38.9954378,
+      userLongitude: -9.1411938,
     });
 
     vi.setSystemTime(new Date(2022, 0, 21, 8, 0, 0));
@@ -77,10 +77,30 @@ describe("Check In Use Case", () => {
     const { checkIn } = await sut.execute({
       gymId: "gym-01",
       userId: "user-01",
-      userLatitude: 0,
-      userLongitude: 0,
+      userLatitude: 38.9954378,
+      userLongitude: -9.1411938,
     });
 
     expect(checkIn.id).toEqual(expect.any(String));
+  });
+
+  it("should not be able to check in on distant gym", async () => {
+    gymsRepository.items.push({
+      id: "gym-01",
+      title: "JavaScript Gym",
+      description: "",
+      phone: "",
+      latitute: new Prisma.Decimal(-27.0747279),
+      longitude: new Prisma.Decimal(-49.4889672),
+    });
+
+    await expect(() =>
+      sut.execute({
+        gymId: "gym-01",
+        userId: "user-01",
+        userLatitude: -27.2092052,
+        userLongitude: -49.6401091,
+      })
+    ).rejects.toBeInstanceOf(Error);
   });
 });
