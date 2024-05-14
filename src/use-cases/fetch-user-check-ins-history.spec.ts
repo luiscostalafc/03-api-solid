@@ -1,5 +1,4 @@
 import { describe, expect, it, beforeEach } from "vitest";
-import { Prisma } from "@prisma/client";
 
 import { FetchUserCheckInsHistoryUseCase } from "./fetch-user-check-ins-history";
 import { InMemoryCheckInsRepository } from "@/repositories/in-memory/in-memory-check-ins-repository";
