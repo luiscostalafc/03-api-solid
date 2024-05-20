@@ -6,6 +6,7 @@
   "scripts": {
     "test": "vitest run --dir src/use-cases",
     "test:e2e": "vitest run --dir src/http",
+    "test:e2e:watch": "vitest --dir src/http",
     "test:ui": "vitest --ui",
     "test:watch": "vitest --dir src/use-cases",
     "test:coverage": "vitest run --coverage",
@@ -27,10 +28,12 @@
   "devDependencies": {
     "@types/bcryptjs": "2.4.6",
     "@types/node": "20.12.7",
+    "@types/supertest": "6.0.2",
     "@vitest/coverage-v8": "1.6.0",
     "@vitest/ui": "1.6.0",
     "eslint": "9.1.1",
-    "prisma": "5.13.0",
+    "prisma": "5.14.0",
+    "supertest": "7.0.0",
     "tsup": "8.0.2",
     "tsx": "4.7.3",
     "typescript": "5.4.5",
@@ -39,7 +42,7 @@
   },
   "dependencies": {
     "@fastify/jwt": "8.0.1",
-    "@prisma/client": "5.13.0",
+    "@prisma/client": "5.14.0",
     "bcryptjs": "2.4.3",
     "dayjs": "1.11.11",
     "dotenv": "16.4.5",
