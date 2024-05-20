@@ -20,7 +20,8 @@
     "migrate:dev": "npx prisma migrate dev",
     "migrate:deploy": "npx prisma migrate deploy",
     "view:database": "npx prisma studio",
-    "up": "docker compose up -d"
+    "up": "docker compose up -d",
+    "stop": "docker compose stop"
   },
   "keywords": [],
   "author": "",
