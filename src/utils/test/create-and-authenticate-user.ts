@@ -18,7 +18,7 @@ export async function createAndAuthenticateUser(
   });
 
   const authResponse = await request(app.server).post("/sessions").send({
-    email: "johdoe@example.com",
+    email: "johndoe@example.com",
     password: "123456",
   });
 

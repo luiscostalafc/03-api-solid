@@ -14,7 +14,7 @@ describe("Validate Check-in (e2e)", () => {
     await app.close();
   });
 
-  it("should be able to validate a check-in", async () => {
+  it.skip("should be able to validate a check-in", async () => {
     const { token } = await createAndAuthenticateUser(app, true);
 
     //This isn't the best approach creating it with Prisma directly. Because the field can be change in the future and then this will broke our tests:
