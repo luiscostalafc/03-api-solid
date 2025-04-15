@@ -51,7 +51,7 @@ jobs:
         run: npm run test:e2e
         env:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_URL: ${{ secrets.POSTGRESQL_DATABASE }}
 
       - name: Build Application
         run: npm run build
