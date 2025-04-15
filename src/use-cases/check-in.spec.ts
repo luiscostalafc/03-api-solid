@@ -60,7 +60,7 @@ describe("Check In Use Case", () => {
         userId: "user-01",
         userLatitude: 38.9954378,
         userLongitude: -9.1411938,
-      })
+      }),
     ).rejects.toBeInstanceOf(MaxNumberOfCheckInsError);
   });
 
@@ -102,7 +102,7 @@ describe("Check In Use Case", () => {
         userId: "user-01",
         userLatitude: -27.2092052,
         userLongitude: -49.6401091,
-      })
+      }),
     ).rejects.toBeInstanceOf(MaxDistanceError);
   });
 });

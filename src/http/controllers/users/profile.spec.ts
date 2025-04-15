@@ -25,7 +25,7 @@ describe("Profile (e2e)", () => {
     expect(profileResponse.body.user).toEqual(
       expect.objectContaining({
         email: "johndoe@example.com",
-      })
+      }),
     );
   });
 });
