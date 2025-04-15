@@ -21,7 +21,7 @@ interface CheckInUseCaseResponse {
 export class CheckInUseCase {
   constructor(
     private checkInsRepository: CheckInsRepository,
-    private gymsRepository: GymsRepository
+    private gymsRepository: GymsRepository,
   ) {}
 
   async execute({
@@ -44,7 +44,7 @@ export class CheckInUseCase {
       {
         latitude: gym.latitude.toNumber(),
         longitude: gym.longitude.toNumber(),
-      }
+      },
     );
 
     const MAX_DISTANCE_IN_KILOMETERS = 0.1;
@@ -55,7 +55,7 @@ export class CheckInUseCase {
 
     const checkInOnSameDay = await this.checkInsRepository.findByUserIdOnDate(
       userId,
-      new Date()
+      new Date(),
     );
 
     if (checkInOnSameDay) {
