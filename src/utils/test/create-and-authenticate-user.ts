@@ -6,7 +6,7 @@ import request from "supertest";
 
 export async function createAndAuthenticateUser(
   app: FastifyInstance,
-  isAdmin = false
+  isAdmin = false,
 ) {
   await prisma.user.create({
     data: {
