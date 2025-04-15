@@ -37,6 +37,7 @@ app.setErrorHandler((error, _, reply) => {
   if (env.NODE_ENV !== "production") {
     console.error(error);
   } else {
+    // Test
     // TODO: Here we should log to an external tool like DataDog/NewRelic/Sentry
   }
 
