@@ -36,6 +36,7 @@ export class CheckInUseCase {
       throw new ResourceNotFoundError();
     }
 
+    // Test diff
     const distance = getDistanceBetweenCoordinates(
       {
         latitude: userLatitude,
