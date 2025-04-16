@@ -10,6 +10,7 @@ interface CreateGymUseCaseRequest {
   longitude: number;
 }
 
+// Test diff
 interface CreateGymUseCaseResponse {
   gym: Gym;
 }

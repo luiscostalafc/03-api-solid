@@ -3,7 +3,7 @@ import { User } from "@prisma/client";
 
 import { UsersRepository } from "@/repositories/users-repository";
 import { UserAlreadyExistsError } from "./errors/use-already-exists-error";
-
+// Test diff
 interface RegisterUseCaseRequest {
   name: string;
   email: string;
@@ -16,7 +16,7 @@ interface RegisterUseCaseResponse {
 
 export class RegisterUseCase {
   constructor(private usersRepository: UsersRepository) {}
-
+  // Test diff
   async execute({
     email,
     name,

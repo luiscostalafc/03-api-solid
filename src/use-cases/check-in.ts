@@ -36,6 +36,7 @@ export class CheckInUseCase {
       throw new ResourceNotFoundError();
     }
 
+    // Test diff 1
     const distance = getDistanceBetweenCoordinates(
       {
         latitude: userLatitude,
@@ -47,6 +48,7 @@ export class CheckInUseCase {
       },
     );
 
+    // Test diff 2
     const MAX_DISTANCE_IN_KILOMETERS = 0.1;
 
     if (distance > MAX_DISTANCE_IN_KILOMETERS) {
@@ -62,6 +64,7 @@ export class CheckInUseCase {
       throw new MaxNumberOfCheckInsError();
     }
 
+    // Test diff 3
     const checkIn = await this.checkInsRepository.create({
       gym_id: gymId,
       user_id: userId,
