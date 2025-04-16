@@ -13,7 +13,6 @@ interface GetUserProfileUseCaseResponse {
 
 export class GetUserProfileUseCase {
   constructor(private usersRepository: UsersRepository) {}
-  // Test diff
   async execute({
     userId,
   }: GetUserProfileUseCaseRequest): Promise<GetUserProfileUseCaseResponse> {
